@@ -1,8 +1,26 @@
-import logo from "./logo.svg";
+import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
+import { decrement, increment, incrementByAmount } from "./redux/counterSlice";
+import { useState } from "react";
 
 function App() {
-  return <div className="App"></div>;
+  const count = useSelector((state) => state.counter.value);
+  const [incrementAmount, setIncrementAmount] = useState("2");
+  const dispatch = useDispatch();
+  return (
+    <div className="App">
+      <h1>count: {count}</h1>
+      <input
+        onChange={(e) => setIncrementAmount(e.target.value)}
+        value={incrementAmount}
+      ></input>
+      <button onClick={() => dispatch(increment())}>＋</button>
+      <button onClick={() => dispatch(decrement())}>－</button>
+      <button onClick={dispatch(incrementByAmount(Number(incrementAmount)))}>
+        追加
+      </button>
+    </div>
+  );
 }
 
 export default App;
