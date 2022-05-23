@@ -16,7 +16,9 @@ function App() {
       ></input>
       <button onClick={() => dispatch(increment())}>＋</button>
       <button onClick={() => dispatch(decrement())}>－</button>
-      <button onClick={dispatch(incrementByAmount(Number(incrementAmount)))}>
+      <button
+        onClick={() => dispatch(incrementByAmount(Number(incrementAmount)))}
+      >
         追加
       </button>
     </div>
